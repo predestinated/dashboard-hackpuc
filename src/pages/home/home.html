@@ -5,16 +5,22 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card *ngFor="let conta of contas | async">
-    <ion-card-header text-center>
-      <b>Mesa: {{conta.mesa}}</b>
-    </ion-card-header>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-xs-12 col-sm-6 col-md-4 col-lg-3 *ngFor="let conta of contas | async">
+        <ion-card>
+          <ion-card-header text-center>
+            <b>Mesa: {{conta.mesa}}</b>
+          </ion-card-header>
 
-    <ion-list>
-      <button ion-item *ngFor="let pedido of conta?.produtos" [hidden]="pedido.entregue">
-      <!-- <ion-icon name="cart" item-start></ion-icon> -->
-      {{pedido?.nome}}
-    </button>
-    </ion-list>
-  </ion-card>
+          <ion-list>
+            <button ion-item *ngFor="let pedido of conta?.produtos" [hidden]="pedido.entregue">
+              <!-- <ion-icon name="cart" item-start></ion-icon> -->
+              {{pedido?.nome}}
+            </button>
+          </ion-list>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
